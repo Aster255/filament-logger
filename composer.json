@@ -2,7 +2,7 @@
     "name": "z3d0x/filament-logger",
     "description": "Activity logger for filament",
     "keywords": [
-        "Z3d0X",
+        "Aster255",
         "laravel",
         "filament-logger"
     ],
@@ -36,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Z3d0X\\FilamentLogger\\": "src",
-            "Z3d0X\\FilamentLogger\\Database\\Factories\\": "database/factories"
+            "Aster255\\FilamentLogger\\": "src",
+            "Aster255\\FilamentLogger\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Z3d0X\\FilamentLogger\\Tests\\": "tests"
+            "Aster255\\FilamentLogger\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Z3d0X\\FilamentLogger\\FilamentLoggerServiceProvider"
+                "Aster255\\FilamentLogger\\FilamentLoggerServiceProvider"
             ],
             "aliases": {
-                "FilamentLogger": "Z3d0X\\FilamentLogger\\Facades\\FilamentLogger"
+                "FilamentLogger": "Aster255\\FilamentLogger\\Facades\\FilamentLogger"
             }
         }
     },

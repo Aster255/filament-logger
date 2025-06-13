@@ -1,6 +1,6 @@
 <?php
 
-namespace Z3d0X\FilamentLogger\Loggers;
+namespace Aster255\FilamentLogger\Loggers;
 
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Events\NotificationFailed;
@@ -23,15 +23,15 @@ class NotificationLogger
         $notification = class_basename($event->notification);
 
         if ($event instanceof NotificationSent) {
-            $description = $notification.' Notification sent';
+            $description = $notification . ' Notification sent';
         } else {
-            $description = $notification.' Notification failed';
+            $description = $notification . ' Notification failed';
         }
-        
+
         $receipent = $this->getRecipient($event->notifiable, $event->channel);
-        
-        if($receipent) {
-             $description .= ' to '.$receipent;
+
+        if ($receipent) {
+            $description .= ' to ' . $receipent;
         }
 
         app(ActivityLogger::class)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Z3d0X\FilamentLogger\Loggers;
+namespace Aster255\FilamentLogger\Loggers;
 
 use Filament\Facades\Filament;
 use Illuminate\Auth\Events\Login;
@@ -17,7 +17,7 @@ class AccessLogger
      */
     public function handle(Login $event)
     {
-        $description = Filament::getUserName($event->user).' logged in';
+        $description = Filament::getUserName($event->user) . ' logged in';
 
         app(ActivityLogger::class)
             ->useLog(config('filament-logger.access.log_name'))

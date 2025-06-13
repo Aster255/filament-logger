@@ -1,6 +1,6 @@
 <?php
 
-namespace Z3d0X\FilamentLogger;
+namespace Aster255\FilamentLogger;
 
 use Filament\Facades\Filament;
 use Filament\Panel;
@@ -63,10 +63,10 @@ class FilamentLoggerServiceProvider extends PackageServiceProvider
             $exceptResources = [...config('filament-logger.resources.exclude'), config('filament-logger.activity_resource')];
 
             $loggableResources = collect(Filament::getPanels())
-                ->flatMap(fn (Panel $panel) => $panel->getResources())
+                ->flatMap(fn(Panel $panel) => $panel->getResources())
                 ->unique()
                 ->filter(function ($resource) use ($exceptResources) {
-                    return ! in_array($resource, $exceptResources);
+                    return !in_array($resource, $exceptResources);
                 });
 
             foreach ($loggableResources as $resource) {
@@ -74,7 +74,7 @@ class FilamentLoggerServiceProvider extends PackageServiceProvider
             }
         }
 
-        if (config('filament-logger.models.enabled', true) && ! empty(config('filament-logger.models.register'))) {
+        if (config('filament-logger.models.enabled', true) && !empty(config('filament-logger.models.register'))) {
             foreach (config('filament-logger.models.register', []) as $model) {
                 $model::observe(config('filament-logger.models.logger'));
             }

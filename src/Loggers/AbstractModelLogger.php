@@ -1,6 +1,6 @@
 <?php
 
-namespace Z3d0X\FilamentLogger\Loggers;
+namespace Aster255\FilamentLogger\Loggers;
 
 use Filament\Facades\Filament;
 use Illuminate\Auth\GenericUser;
@@ -16,7 +16,7 @@ abstract class AbstractModelLogger
 
     protected function getUserName(?Authenticatable $user): string
     {
-        if(blank($user) || $user instanceof GenericUser) {
+        if (blank($user) || $user instanceof GenericUser) {
             return 'Anonymous';
         }
 
@@ -42,7 +42,7 @@ abstract class AbstractModelLogger
 
     protected function getLoggableAttributes(Model $model, mixed $values = []): array
     {
-        if (! is_array($values)) {
+        if (!is_array($values)) {
             return [];
         }
 
@@ -59,12 +59,12 @@ abstract class AbstractModelLogger
 
     protected function log(Model $model, string $event, ?string $description = null, mixed $attributes = null)
     {
-        if(is_null($description)) {
-            $description = $this->getModelName($model).' '.$event;
+        if (is_null($description)) {
+            $description = $this->getModelName($model) . ' ' . $event;
         }
 
         if (auth()->check()) {
-            $description .= ' by '.$this->getUserName(auth()->user());
+            $description .= ' by ' . $this->getUserName(auth()->user());
         }
 
         $this->activityLogger()
@@ -76,7 +76,7 @@ abstract class AbstractModelLogger
 
     public function created(Model $model)
     {
-        $this->log($model, 'Created', attributes:$model->getAttributes());
+        $this->log($model, 'Created', attributes: $model->getAttributes());
     }
 
     public function updated(Model $model)
@@ -88,7 +88,7 @@ abstract class AbstractModelLogger
             return;
         }
 
-        $this->log($model, 'Updated', attributes:$changes);
+        $this->log($model, 'Updated', attributes: $changes);
     }
 
     public function deleted(Model $model)

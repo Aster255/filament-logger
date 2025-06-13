@@ -1,6 +1,6 @@
 <?php
 
-namespace Z3d0X\FilamentLogger\Loggers;
+namespace Aster255\FilamentLogger\Loggers;
 
 class ResourceLogger extends AbstractModelLogger
 {
