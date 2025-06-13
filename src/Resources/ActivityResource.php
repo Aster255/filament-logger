@@ -95,7 +95,7 @@ class ActivityResource extends Resource
                     ->visible(fn($record) => $record->properties?->count() > 0)
                     ->schema(function (?Model $record) {
                         /** @var Activity&ActivityModel $record */
-                        $properties = $record->properties->except(['attributes', 'old']);
+                        $properties = $record->properties->except(['attributes']);
 
                         $schema = [];
 
