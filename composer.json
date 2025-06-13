@@ -1,12 +1,12 @@
 {
-    "name": "z3d0x/filament-logger",
+    "name": "aster255/filament-logger",
     "description": "Activity logger for filament",
     "keywords": [
         "Aster255",
         "laravel",
         "filament-logger"
     ],
-    "homepage": "https://github.com/z3d0x/filament-logger",
+    "homepage": "https://github.com/aster255/filament-logger",
     "license": "MIT",
     "authors": [
         {

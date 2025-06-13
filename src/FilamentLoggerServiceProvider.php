@@ -31,7 +31,7 @@ class FilamentLoggerServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $installCommand) {
                 $installCommand
                     ->publishConfigFile()
-                    ->askToStarRepoOnGitHub('z3d0x/filament-logger')
+                    ->askToStarRepoOnGitHub('aster255/filament-logger')
                     ->startWith(function (InstallCommand $installCommand) {
                         $installCommand->call('vendor:publish', [
                             '--provider' => "Spatie\Activitylog\ActivitylogServiceProvider",
