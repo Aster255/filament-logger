@@ -83,12 +83,24 @@ abstract class AbstractModelLogger
     {
         $changes = $model->getChanges();
 
-        //Ignore the changes to remember_token
-        if (count($changes) === 1 && array_key_exists('remember_token', $changes)) {
+        // Ignore the changes to remember_token and updated_at
+        if (count($changes) === 1 && (array_key_exists('remember_token', $changes) || array_key_exists('updated_at', $changes))) {
             return;
         }
 
-        $this->log($model, 'Updated', attributes: $changes);
+        // Prepare attributes for log
+        $attributes = collect($model->getOriginal())
+            ->only(array_keys($changes))
+            ->reject(fn($value, $key) => $key === 'updated_at');
+
+        $this->log(
+            $model,
+            'Updated',
+            attributes: [
+                'attributes' => collect($changes)->only($attributes->keys())->all(),
+                'old' => $attributes->all(),
+            ]
+        );
     }
 
     public function deleted(Model $model)
