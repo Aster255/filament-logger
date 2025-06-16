@@ -3,6 +3,7 @@
 namespace Aster255\FilamentLogger\Resources;
 
 use Filament\Forms\Form;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Facades\Filament;
@@ -164,6 +165,10 @@ class ActivityResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->bulkActions([])
+            ->actions([
+                ViewAction::make()
+                    ->extraAttributes(['class' => 'view-btn-color']),
+            ])
             ->filters([
                 SelectFilter::make('log_name')
                     ->label(__('filament-logger::filament-logger.resource.label.type'))
